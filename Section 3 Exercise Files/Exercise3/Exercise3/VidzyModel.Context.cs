@@ -30,7 +30,7 @@ namespace Exercise3
         public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<Video> Videos { get; set; }
     
-        public virtual int AddVideo(string name, Nullable<System.DateTime> releaseDate, string genre)
+        public virtual int AddVideo(string name, Nullable<System.DateTime> releaseDate, Nullable<byte> genre)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("Name", name) :
@@ -40,9 +40,9 @@ namespace Exercise3
                 new ObjectParameter("ReleaseDate", releaseDate) :
                 new ObjectParameter("ReleaseDate", typeof(System.DateTime));
     
-            var genreParameter = genre != null ?
+            var genreParameter = genre.HasValue ?
                 new ObjectParameter("Genre", genre) :
-                new ObjectParameter("Genre", typeof(string));
+                new ObjectParameter("Genre", typeof(byte));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddVideo", nameParameter, releaseDateParameter, genreParameter);
         }

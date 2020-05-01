@@ -8,45 +8,51 @@ namespace Exercise3
         {
             var vidzyContext = new VidzyDbContext();
 
-            PopulateMarvelPhaseOneMovies(vidzyContext);
-            PopulateMarvelPhaseTwoMovies(vidzyContext);
-            PopulateMarvelPhaseFourMovies(vidzyContext);
+            PopulateTwilightMovies(vidzyContext);
+            PopulateOriginalTrilogyMovies(vidzyContext);
+            PopulatePrequelTrilogyMovies(vidzyContext);
+            PopulateSequelTrilogyMovies(vidzyContext);
+            PopulateAnthologyMovies(vidzyContext);
         }
 
-        private static void PopulateMarvelPhaseFourMovies(VidzyDbContext vidzyContext)
+        private static void PopulateAnthologyMovies(VidzyDbContext vidzyContext)
         {
-            vidzyContext.AddVideo("Captain America: Civil War", new DateTime(year: 2016, month: 5, day: 6), "Action");
-            vidzyContext.AddVideo("Doctor Strange", new DateTime(year: 2016, month: 11, day: 4), "Action");
-            vidzyContext.AddVideo("Guardians of the Galaxy Vol. 2", new DateTime(year: 2017, month: 5, day: 5), "Action");
-            vidzyContext.AddVideo("Spider-Man: Homecoming", new DateTime(year: 2017, month: 7, day: 7), "Action");
-            vidzyContext.AddVideo("Thor: Ragnarok", new DateTime(year: 2017, month: 11, day: 3), "Action");
-            vidzyContext.AddVideo("Black Panther", new DateTime(year: 2018, month: 2, day: 16), "Action");
-            vidzyContext.AddVideo("Avengers: Infinity War", new DateTime(year: 2018, month: 4, day: 27), "Action");
-            vidzyContext.AddVideo("Ant-Man and the Wasp", new DateTime(year: 2018, month: 7, day: 6), "Action");
-            vidzyContext.AddVideo("Captain Marvel", new DateTime(year: 2019, month: 3, day: 8), "Action");
-            vidzyContext.AddVideo("Avengers: Endgame", new DateTime(year: 2019, month: 4, day: 26), "Action");
-            vidzyContext.AddVideo("Spider-Man: Far From Home", new DateTime(year: 2019, month: 7, day: 2), "Action");
+            vidzyContext.AddVideo("Rogue One: A Star Wars Story", new DateTime(year: 2016, month: 12, day: 16), 2);
+            vidzyContext.AddVideo("Solo: A Star Wars Story", new DateTime(year: 2018, month: 5, day: 25), 2);
         }
 
-        private static void PopulateMarvelPhaseTwoMovies(VidzyDbContext vidzyContext)
+        private static void PopulateSequelTrilogyMovies(VidzyDbContext vidzyContext)
         {
-            vidzyContext.AddVideo("Iron Man 3", new DateTime(year: 2013, month: 5, day: 3), "Action");
-            vidzyContext.AddVideo("Thor: The Dark World", new DateTime(year: 2013, month: 11, day: 8), "Action");
-            vidzyContext.AddVideo("Captain America: The Winter Soldier", new DateTime(year: 2014, month: 4, day: 4), "Action");
-            vidzyContext.AddVideo("Guardians of the Galaxy", new DateTime(year: 2014, month: 9, day: 1), "Action");
-            vidzyContext.AddVideo("Avengers: Age of Ultron", new DateTime(year: 2015, month: 5, day: 1), "Action");
-            vidzyContext.AddVideo("Ant-Man", new DateTime(year: 2015, month: 7, day: 17), "Action");
+            vidzyContext.AddVideo("Episode VII – The Force Awakens", new DateTime(year: 2015, month: 12, day: 18), 2);
+            vidzyContext.AddVideo("Episode VIII – The Last Jedi", new DateTime(year: 2017, month: 12, day: 15), 2);
+            vidzyContext.AddVideo("Episode IX – The Rise of Skywalker", new DateTime(year: 2019, month: 12, day: 20),
+                2);
         }
 
-        private static void PopulateMarvelPhaseOneMovies(VidzyDbContext vidzyContext)
+        private static void PopulatePrequelTrilogyMovies(VidzyDbContext vidzyContext)
         {
-            vidzyContext.AddVideo("Iron Man", new DateTime(year: 2008, month: 5, day: 2), "Action");
-            vidzyContext.AddVideo("The Incredible Hulk", new DateTime(year: 2008, month: 6, day: 13), "Action");
-            vidzyContext.AddVideo("Iron Man 2", new DateTime(year: 2010, month: 5, day: 7), "Action");
-            vidzyContext.AddVideo("Thor", new DateTime(year: 2011, month: 5, day: 6), "Action");
-            vidzyContext.AddVideo("Captain America: The First Avenger", new DateTime(year: 2011, month: 7, day: 22),
-                "Action");
-            vidzyContext.AddVideo("Marvel's The Avengers", new DateTime(year: 2012, month: 5, day: 4), "Action");
+            vidzyContext.AddVideo("Episode I – The Phantom Menace", new DateTime(year: 1999, month: 5, day: 19), 2);
+            vidzyContext.AddVideo("Episode II – Attack of the Clones", new DateTime(year: 2002, month: 5, day: 16), 2);
+            vidzyContext.AddVideo("Episode III – Revenge of the Sith", new DateTime(year: 2005, month: 5, day: 19), 2);
+        }
+
+        private static void PopulateOriginalTrilogyMovies(VidzyDbContext vidzyContext)
+        {
+            vidzyContext.AddVideo("Episode IV – A New Hope", new DateTime(year: 1977, month: 5, day: 25), 2);
+            vidzyContext.AddVideo("Episode V – The Empire Strikes Back", new DateTime(year: 1980, month: 5, day: 21),
+                2);
+            vidzyContext.AddVideo("Episode VI – Return of the Jedi", new DateTime(year: 1983, month: 5, day: 25), 2);
+        }
+
+        private static void PopulateTwilightMovies(VidzyDbContext vidzyContext)
+        {
+            vidzyContext.AddVideo("Twilight", new DateTime(year: 2008, month: 11, day: 21), 6);
+            vidzyContext.AddVideo("The Twilight Saga: New Moon", new DateTime(year: 2009, month: 11, day: 20), 6);
+            vidzyContext.AddVideo("The Twilight Saga: Eclipse", new DateTime(year: 2010, month: 6, day: 24), 6);
+            vidzyContext.AddVideo("The Twilight Saga: Breaking Dawn – Part 1",
+                new DateTime(year: 2011, month: 11, day: 18), 6);
+            vidzyContext.AddVideo("The Twilight Saga: Breaking Dawn – Part 2",
+                new DateTime(year: 2012, month: 11, day: 12), 6);
         }
     }
 }
