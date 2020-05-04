@@ -18,6 +18,7 @@ namespace Exercise3
         public string Name { get; set; }
         public System.DateTime ReleaseDate { get; set; }
         public byte GenreId { get; set; }
+        public Exercise3.Classification Classification { get; set; }
     
         public virtual Genre Genre { get; set; }
     }
