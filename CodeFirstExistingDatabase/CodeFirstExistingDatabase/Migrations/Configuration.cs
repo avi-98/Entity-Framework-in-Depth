@@ -16,15 +16,6 @@ namespace CodeFirstExistingDatabase.Migrations
 
         protected override void Seed(CodeFirstExistingDatabase.PlutoContext context)
         {
-            context.Authors.AddOrUpdate(a => a.Name,
-                new Author()
-                {
-                    Name = "Author 1",
-                    Courses = new List<Course>()
-                    {
-                        new Course(){Name = "Course for Author 1", Description = "Description"}
-                    }
-                });
         }
     }
 }
