@@ -9,5 +9,6 @@ namespace Exercise4
         public string Name { get; set; }
         public DateTime ReleaseDate { get; set; }
         public Genre Genre { get; set; }
+        public Classification Classification { get; set; }
     }
 }
