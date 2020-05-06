@@ -51,6 +51,15 @@
   <ItemGroup>
     <Compile Include="Author.cs" />
     <Compile Include="Course.cs" />
+    <Compile Include="Migrations\202005051805434_InitialModel.cs" />
+    <Compile Include="Migrations\202005051805434_InitialModel.Designer.cs">
+      <DependentUpon>202005051805434_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005061803112_AddAnotationsToCourseTable.cs" />
+    <Compile Include="Migrations\202005061803112_AddAnotationsToCourseTable.Designer.cs">
+      <DependentUpon>202005061803112_AddAnotationsToCourseTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PlutoContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,6 +70,14 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202005051805434_InitialModel.resx">
+      <DependentUpon>202005051805434_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005061803112_AddAnotationsToCourseTable.resx">
+      <DependentUpon>202005061803112_AddAnotationsToCourseTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
