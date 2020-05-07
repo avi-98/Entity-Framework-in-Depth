@@ -9,11 +9,7 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            context.Authors.SelectMany(a => context.Courses, (author, course) => new
-            {
-                AuthorName = author.Name,
-                CourseName = course.Name
-            });
+            context.Courses.Skip(10).Take(10);
         }
     }
 }
