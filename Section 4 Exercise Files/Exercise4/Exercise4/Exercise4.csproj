@@ -53,6 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classification.cs" />
+    <Compile Include="EntityConfiguration\GenreConfiguration.cs" />
+    <Compile Include="EntityConfiguration\TagConfiguration.cs" />
+    <Compile Include="EntityConfiguration\VideoConfiguration.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="Migrations\202005051456584_CreateVideoAndGenreTables.cs" />
     <Compile Include="Migrations\202005051456584_CreateVideoAndGenreTables.Designer.cs">
@@ -70,9 +73,18 @@
     <Compile Include="Migrations\202005051514356_AddClassificationColumnToVideosTable.Designer.cs">
       <DependentUpon>202005051514356_AddClassificationColumnToVideosTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005070426515_ModifiedVideoAndGenreTable.cs" />
+    <Compile Include="Migrations\202005070426515_ModifiedVideoAndGenreTable.Designer.cs">
+      <DependentUpon>202005070426515_ModifiedVideoAndGenreTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005070436579_CreateTagsTableAndCreateManyToManyRelationshipToVideos.cs" />
+    <Compile Include="Migrations\202005070436579_CreateTagsTableAndCreateManyToManyRelationshipToVideos.Designer.cs">
+      <DependentUpon>202005070436579_CreateTagsTableAndCreateManyToManyRelationshipToVideos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tag.cs" />
     <Compile Include="Video.cs" />
     <Compile Include="VidzyModel.cs" />
   </ItemGroup>
@@ -93,6 +105,13 @@
     <EmbeddedResource Include="Migrations\202005051514356_AddClassificationColumnToVideosTable.resx">
       <DependentUpon>202005051514356_AddClassificationColumnToVideosTable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005070426515_ModifiedVideoAndGenreTable.resx">
+      <DependentUpon>202005070426515_ModifiedVideoAndGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005070436579_CreateTagsTableAndCreateManyToManyRelationshipToVideos.resx">
+      <DependentUpon>202005070436579_CreateTagsTableAndCreateManyToManyRelationshipToVideos.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
