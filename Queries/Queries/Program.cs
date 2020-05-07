@@ -9,17 +9,14 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            var groups = context.Courses.GroupBy(c => c.Level);
-
-            foreach (var group in groups)
-            {
-                Console.WriteLine($@"Key: {group.Key}");
-
-                foreach (var course in group)
+            context.Courses.Join(context.Authors,
+                c => c.AuthorId,
+                a => a.Id,
+                (course, author) => new
                 {
-                    Console.WriteLine($@"   {course.Name}");
-                }
-            }
+                    CourseName = course.Name,
+                    AuthorName = author.Name
+                });
         }
     }
 }
