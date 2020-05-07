@@ -9,16 +9,16 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            var tags = context.Courses
-                .Where(c => c.Level == 1)
-                .OrderByDescending(c => c.Name)
-                .ThenByDescending(c => c.Level)
-                .SelectMany(c => c.Tags)
-                .Distinct();
+            var groups = context.Courses.GroupBy(c => c.Level);
 
-            foreach (var t in tags)
+            foreach (var group in groups)
             {
-                Console.WriteLine(t.Name);
+                Console.WriteLine($@"Key: {group.Key}");
+
+                foreach (var course in group)
+                {
+                    Console.WriteLine($@"   {course.Name}");
+                }
             }
         }
     }
