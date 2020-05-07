@@ -1,3 +1,5 @@
+using Exercise4.EntityConfiguration;
+
 namespace Exercise4
 {
     using System;
@@ -12,6 +14,12 @@ namespace Exercise4
         public VidzyModel()
             : base("name=VidzyModel")
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new VideoConfiguration());
+            modelBuilder.Configurations.Add(new GenreConfiguration());
         }
     }
 }
