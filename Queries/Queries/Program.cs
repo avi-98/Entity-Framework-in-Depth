@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Queries
@@ -9,11 +10,12 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            context.Authors.SelectMany(a => context.Courses, (author, course) => new
-            {
-                AuthorName = author.Name,
-                CourseName = course.Name
-            });
+            // IQueryable<Course> courses = context.Courses;
+            IEnumerable<Course> courses = context.Courses;
+            var filtered = courses.Where(c => c.Level == 1);
+
+            foreach (var course in filtered)
+                Console.WriteLine(course.Name);
         }
     }
 }
