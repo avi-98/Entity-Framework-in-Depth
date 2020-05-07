@@ -9,7 +9,10 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            var courses = context.Courses.Where(c => c.Level == 1);
+            var courses = context.Courses
+                .Where(c => c.Level == 1)
+                .OrderByDescending(c => c.Name)
+                .ThenByDescending(c => c.Level);
         }
     }
 }
