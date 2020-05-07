@@ -9,13 +9,13 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            context.Courses.Join(context.Authors,
-                c => c.AuthorId,
+            context.Authors.GroupJoin(context.Courses,
                 a => a.Id,
-                (course, author) => new
+                c => c.AuthorId,
+                (author, courses) => new
                 {
-                    CourseName = course.Name,
-                    AuthorName = author.Name
+                    AuthorName = author,
+                    Courses = courses.Count()
                 });
         }
     }
