@@ -11,5 +11,11 @@ namespace Exercise4
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
         public Classification Classification { get; set; }
+        public ICollection<Tag> Tags { get; set; }
+
+        public Video()
+        {
+            Tags = new HashSet<Tag>();
+        }
     }
 }
