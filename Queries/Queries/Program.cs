@@ -9,15 +9,11 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            var query =
-                from a in context.Authors
-                from c in context.Courses
-                select new {AuthorName = a.Name, CourseName = c.Name};
-
-            foreach (var x in query)
+            context.Authors.SelectMany(a => context.Courses, (author, course) => new
             {
-                Console.WriteLine($@"{x.AuthorName} - {x.CourseName}");
-            }
+                AuthorName = author.Name,
+                CourseName = course.Name
+            });
         }
     }
 }
