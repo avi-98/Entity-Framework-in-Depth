@@ -13,7 +13,8 @@ namespace Queries
                 .Where(c => c.Level == 1)
                 .OrderByDescending(c => c.Name)
                 .ThenByDescending(c => c.Level)
-                .SelectMany(c => c.Tags);
+                .SelectMany(c => c.Tags)
+                .Distinct();
 
             foreach (var t in tags)
             {
