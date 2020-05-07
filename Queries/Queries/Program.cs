@@ -9,10 +9,8 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            context.Courses.OrderBy(c => c.Level)
-                .FirstOrDefault(c => c.FullPrice > 100);
-            // context.Courses.LastOrDefault(); This does not translate to an SQL Query
-            context.Courses.SingleOrDefault(c => c.Id == 1);
+            var allAbove10Dollars = context.Courses.All(c => c.FullPrice > 10);
+            context.Courses.Any(c => c.Level == 1);
         }
     }
 }
