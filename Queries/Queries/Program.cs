@@ -9,12 +9,11 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            var count = context.Courses.Where(c => c.Level == 1).Count();
-            var count2 = context.Courses.Count(c => c.Level == 1); // Filtering the count for courses that are level one
+            var courses = context.Courses
+                .Where(c => c.IsBeginnerCourse == true);
 
-            context.Courses.Max(c => c.FullPrice);
-            context.Courses.Min(c => c.FullPrice);
-            context.Courses.Average(c => c.FullPrice);
+            foreach (var course in courses)
+                Console.WriteLine(course.Name);
         }
     }
 }
