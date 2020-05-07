@@ -16,12 +16,7 @@ namespace Queries
 
             foreach (var group in query)
             {
-                Console.WriteLine(group.Key);
-
-                foreach (var course in group)
-                {
-                    Console.WriteLine($@"	 {course.Name}");
-                }
+                Console.WriteLine($@"{group.Key} ({group.Count()})");
             }
         }
     }
