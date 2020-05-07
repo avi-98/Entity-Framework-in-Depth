@@ -11,12 +11,12 @@ namespace Queries
 
             var query =
                 from a in context.Authors
-                join c in context.Courses on a.Id equals c.AuthorId into g
-                select new {AuthorName = a.Name, Courses = g.Count()};
+                from c in context.Courses
+                select new {AuthorName = a.Name, CourseName = c.Name};
 
             foreach (var x in query)
             {
-                Console.WriteLine($@"{x.AuthorName}, ({x.Courses})");
+                Console.WriteLine($@"{x.AuthorName} - {x.CourseName}");
             }
         }
     }
