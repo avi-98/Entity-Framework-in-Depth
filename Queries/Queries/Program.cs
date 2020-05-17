@@ -10,12 +10,10 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            // IQueryable<Course> courses = context.Courses;
-            IEnumerable<Course> courses = context.Courses;
-            var filtered = courses.Where(c => c.Level == 1);
+            var course = context.Courses.Single(c => c.Id == 2);
 
-            foreach (var course in filtered)
-                Console.WriteLine(course.Name);
+            foreach (var tag in course.Tags)
+                Console.WriteLine(tag.Name);
         }
     }
 }
