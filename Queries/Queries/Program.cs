@@ -10,16 +10,10 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            var author = context.Authors.Single(a => a.Id == 1);
+            var authors = context.Authors.ToList();
+            var authorIds = authors.Select(a => a.Id);
 
-            // MSDN
-            context.Entry(author).Collection(a => a.Courses).Query().Where(c => c.FullPrice == 0).Load(); // For single entries ONLY
-
-            // Mosh
-            context.Courses.Where(c => c.AuthorId == author.Id && c.FullPrice == 0).Load();
-
-            foreach (var course in author.Courses)
-                Console.WriteLine($@"{course.Name}");
+            context.Courses.Where(c => authorIds.Contains(c.AuthorId) && c.FullPrice == 0).Load();
         }
     }
 }
