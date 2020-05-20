@@ -11,9 +11,20 @@ namespace Queries
             var context = new PlutoContext();
 
             var authors = context.Authors.ToList();
-            var authorIds = authors.Select(a => a.Id);
+            var author = context.Authors.Single(a => a.Id == 1);
 
-            context.Courses.Where(c => authorIds.Contains(c.AuthorId) && c.FullPrice == 0).Load();
+            var course = new Course
+            {
+                Name = "New Course 2",
+                Description = "New Description",
+                FullPrice = 19.95f,
+                Level = 1,
+                Author = author
+            };
+
+            context.Courses.Add(course);
+
+            context.SaveChanges();
         }
     }
 }
