@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Queries
@@ -10,12 +10,10 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            // IQueryable<Course> courses = context.Courses;
-            IEnumerable<Course> courses = context.Courses;
-            var filtered = courses.Where(c => c.Level == 1);
+            var authors = context.Authors.ToList();
+            var authorIds = authors.Select(a => a.Id);
 
-            foreach (var course in filtered)
-                Console.WriteLine(course.Name);
+            context.Courses.Where(c => authorIds.Contains(c.AuthorId) && c.FullPrice == 0).Load();
         }
     }
 }
