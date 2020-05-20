@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 
 namespace Queries
@@ -10,12 +9,9 @@ namespace Queries
         {
             var context = new PlutoContext();
 
-            var course = context.Courses.Find(4); // .Single(c => c.Id == 4)
-            if (course != null)
-            {
-                course.Name = "New Name";
-                course.AuthorId = 2;
-            }
+            var author = context.Authors.Include(a => a.Courses).Single(a => a.Id == 2);
+            context.Courses.RemoveRange(author.Courses);
+            context.Authors.Remove(author);
 
             context.SaveChanges();
         }
