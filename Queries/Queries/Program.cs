@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Queries
@@ -8,12 +9,23 @@ namespace Queries
         static void Main(string[] args)
         {
             var context = new PlutoContext();
+            
+            // Add an object
+            context.Authors.Add(new Author {Name = "New Author"});
 
-            var author = context.Authors.Include(a => a.Courses).Single(a => a.Id == 2);
-            context.Courses.RemoveRange(author.Courses);
-            context.Authors.Remove(author);
+            // Update an object
+            var author = context.Authors.Find(3);
+            author.Name = "Updated";
 
-            context.SaveChanges();
+            // Remove an object
+            var another = context.Authors.Find(4);
+            context.Authors.Remove(another);
+
+            var entries = context.ChangeTracker.Entries();
+            foreach (var entry in entries)
+            {
+                Console.WriteLine(entry.State);
+            }
         }
     }
 }
