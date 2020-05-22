@@ -9,11 +9,23 @@ namespace Queries
         static void Main(string[] args)
         {
             var context = new PlutoContext();
+            
+            // Add an object
+            context.Authors.Add(new Author {Name = "New Author"});
 
-            var authors = context.Authors.ToList();
-            var authorIds = authors.Select(a => a.Id);
+            // Update an object
+            var author = context.Authors.Find(3);
+            author.Name = "Updated";
 
-            context.Courses.Where(c => authorIds.Contains(c.AuthorId) && c.FullPrice == 0).Load();
+            // Remove an object
+            var another = context.Authors.Find(4);
+            context.Authors.Remove(another);
+
+            var entries = context.ChangeTracker.Entries();
+            foreach (var entry in entries)
+            {
+                Console.WriteLine(entry.State);
+            }
         }
     }
 }
